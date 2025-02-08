@@ -1,0 +1,24 @@
+1. Smart contract and manage order.
+
+* Deploy
+	- deploy smart contract
+
+*Preparing Uniswap
+	*- virtual token and prepare liquidity in testnet.
+	*- run arbitrage application to follow mainnet's price.
+
+2. Place Order
+
+  Control panel
+	- limit price input
+	- place limit order
+
+  Backend
+	- run executor
+
+
+3. Orders history
+
+
+4. Chart
+

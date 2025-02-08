@@ -1,0 +1,83 @@
+const bitquery_apikey="BQYAUI1wWPE1jS3hJXeuIq5UjVsjjOue";
+const query = `
+{
+  ethereum(network: ethereum) {
+    dexTrades(
+      options: {limit: 100000, asc: "timeInterval.minute"}
+      date: {since: "2021-05-23"}
+      exchangeName: {is: "Uniswap"}
+      baseCurrency: {is: "0x910985ffa7101bf5801dd2e91555c465efd9aab3"}
+      quoteCurrency: {is: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}
+    ) {
+      timeInterval {
+        minute(count: 5)
+      }
+      baseCurrency {
+        symbol
+        address
+      }
+      baseAmount
+      quoteCurrency {
+        symbol
+        address
+      }
+      quoteAmount
+      trades: count
+      quotePrice
+      maximum_price: quotePrice(calculate: maximum)
+      minimum_price: quotePrice(calculate: minimum)
+      open_price: minimum(of: block, get: quote_price)
+      close_price: maximum(of: block, get: quote_price)
+    }
+  }
+}
+
+`
+
+{
+  "ethereum": {
+    "dexTrades": [
+      {
+        "timeInterval": {
+          "minute": "2021-05-23 00:00:00"
+        },
+        "baseCurrency": {
+          "symbol": "CHINU",
+          "address": "0x910985ffa7101bf5801dd2e91555c465efd9aab3"
+        },
+        "baseAmount": 36244851541.627914,
+        "quoteCurrency": {
+          "symbol": "WETH",
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "quoteAmount": 0.20175097938073946,
+        "trades": 2,
+        "quotePrice": 5.566334825486167e-12,
+        "maximum_price": 5.613232839691503e-12,
+        "minimum_price": 5.56534387865511e-12,
+        "open_price": "5.613232839691503e-12",
+        "close_price": "5.613232839691503e-12"
+      },
+      {
+        "timeInterval": {
+          "minute": "2021-05-23 00:50:00"
+        },
+        "baseCurrency": {
+          "symbol": "CHINU",
+          "address": "0x910985ffa7101bf5801dd2e91555c465efd9aab3"
+        },
+        "baseAmount": 199342655450.15512,
+        "quoteCurrency": {
+          "symbol": "WETH",
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "quoteAmount": 1.0508147354664592,
+        "trades": 2,
+        "quotePrice": 5.2713993053494335e-12,
+        "maximum_price": 5.517736190301785e-12,
+        "minimum_price": 5.270468995699787e-12,
+        "open_price": "5.270468995699787e-12",
+        "close_price": "5.270468995699787e-12"
+      },
+      {
+        "timeInterval": 
